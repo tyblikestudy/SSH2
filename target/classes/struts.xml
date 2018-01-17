@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 修改动态方法的调用,true 动态方法，false 非动态方法 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	
+    <package name="default" namespace="/" extends="struts-default">
+    
+    	<!--http://localhost:8080/SSH/student!toIndex  -->
+		<action name="student!*" class="studentAction" method="{1}">
+			<result name="list">/list.jsp</result>
+			<result name="remove" type="redirectAction">student!do_query</result>
+			<result name="do_edit">/edit.jsp</result>
+			<result name="to_edit" type="redirectAction">student!do_query</result>
+			<result name="add" type="redirectAction">student!do_query</result>
+			<result name="find">/detailed.jsp</result>
+		</action>
+    </package>
+</struts>
